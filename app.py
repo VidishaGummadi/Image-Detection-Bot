@@ -54,7 +54,6 @@ def webhook():
                         else:
                             send_message(sender_id, "wrong file type sent, requires images.")
 
-                    message_text = messaging_event["message"]["text"]  # the message's text
 
                     
                 if messaging_event.get("delivery"):  # delivery confirmation
