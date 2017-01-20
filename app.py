@@ -38,10 +38,10 @@ def webhook():
 
                 sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                 recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                if messaging_event["message"]["text"]:
+                if "text" in messaging_event["message"]:
                     message_text = messaging_event["message"]["text"]  # the message's text
                     send_message(sender_id, "got it, thanks!")
-                if messaging_event["message"]["attachments"]:
+                if "attachments" in messaging_event["message"]:
                     img_url = messaging_event["message"]["attachments"]["payload"]["url"]
                     send_message(sender_id, img_url)
 
