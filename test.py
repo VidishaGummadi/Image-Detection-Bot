@@ -3,9 +3,17 @@ from google.cloud import vision
 import io
 import os
 
-def detect_labels():
+def download_image(url):
+    filename = 'test.jpg'
+    response = requests.get(url, stream=True)
+    with open(filename, 'wb') as out_file:
+        shutil.copyfileobj(response.raw, out_file)
+    del response
+
+def detect_labels(url):
 	vision_client = vision.Client()
 	# image = client.image(filename='test.jpg')
+	download_image(url)
 
 	file_name = os.path.join(
 	        os.path.dirname(__file__),

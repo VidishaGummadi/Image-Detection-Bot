@@ -8,7 +8,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
@@ -49,7 +48,8 @@ def webhook():
  
                         if message_attachment_type == "image":
                             message_attachment_url = messaging_event["message"]["attachments"][0]["payload"].get("url")
-                            description = message_attachment_url
+                            # download_image(message_attachment_url)
+                            description = detect_labels(message_attachment_url)
                             #description = get_description("test_image.png")
                             send_message(sender_id, description)
                         else:
