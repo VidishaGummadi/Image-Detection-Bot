@@ -36,10 +36,10 @@ def detect_labels(url):
 	faces = image.detect_faces()
 	facelist = []
 
-    for face in faces:
-    	facelist.append(face.emotions.anger)
-    	facelist.append(face.emotions.joy)
-    	facelist.append(face.emotions.surprise)
+	for face in faces:
+		facelist.append(face.emotions.anger)
+		facelist.append(face.emotions.joy)
+		facelist.append(face.emotions.surprise)
         # print('anger: {}'.format(face.emotions.anger))
         # print('joy: {}'.format(face.emotions.joy))
         # print('surprise: {}'.format(face.emotions.surprise))
