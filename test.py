@@ -32,7 +32,7 @@ def detect_labels(url):
 		slabels.append(label.description)
 
 	faces = image.detect_faces()
-	facelist = ["Faces:"]
+	facelist = ["\nFaces:"]
 	for face in faces:
 		facelist.append("anger-"+face.emotions.anger.value)
 		facelist.append("joy-"+face.emotions.joy.value)
