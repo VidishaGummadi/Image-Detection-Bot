@@ -64,8 +64,11 @@ def detect_labels(url):
     logos = image.detect_logos()
 
     logolist = ["\nLogos:"]
-    for logo in logos:
-        logolist.append(logo.description)
+    if not logos:
+        logolist.append("No Logos Found")
+    else:
+        for logo in logos:
+            logolist.append(logo.description)
 
 
     return '\n'.join(slabels+facelist+logolist)
