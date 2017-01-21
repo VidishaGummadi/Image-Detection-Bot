@@ -25,11 +25,15 @@ def detect_labels(url):
 		content = image_file.read()
 		image = vision_client.image(content=content)
 
-	    # Performs label detection on the image file
+	# Performs label detection on the image file
+	
 	labels = image.detect_labels()
 	slabels =["Labels:"]
 	for label in labels:
 		slabels.append(label.description)
+
+
+	# Performs Face detection on the image file
 
 	faces = image.detect_faces()
 	facelist = ["\nFaces:"]
@@ -41,11 +45,21 @@ def detect_labels(url):
 			facelist.append("joy-"+face.emotions.joy.value)
 			facelist.append("surprise-"+face.emotions.surprise.value)
 			facelist.append("sorrow-"+face.emotions.sorrow.value)
-	        # print('anger: {}'.format(face.emotions.anger))
-	        # print('joy: {}'.format(face.emotions.joy))
-	        # print('surprise: {}'.format(face.emotions.surprise))
 
-	return '\n'.join(slabels+facelist)
+	# Performs Text detection on the image file
+	texts = image.detect_text()
+    textlist = ["\nTexts:"]
+    if not texts:
+    	textlist.append("Sorry!! No Text Found")
+    else:
+	    for text in texts:
+	        textlist.append(text.description)
+
+
+
+
+
+	return '\n'.join(slabels+facelist+textlist)
 
 
 # def detect_labels_from_url(uri):
