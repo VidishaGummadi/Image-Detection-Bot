@@ -68,7 +68,7 @@ def detect_labels(url):
         logolist.append(logo.description)
 
 
-    return '\n'.join(slabels+facelist+logolist)+textlist
+    return '\n'.join(slabels+facelist+logolist)
 
     
 
