@@ -55,6 +55,7 @@ def detect_labels(url):
     else:
         for text in texts:
             textlist.append(text.description)
+        textlist = " ".join(textlist)
         textlist = textlist.encode('ascii','ignore')
 
 
