@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from test import detect_labels
 
 import requests
 from flask import Flask, request
