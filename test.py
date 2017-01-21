@@ -60,7 +60,7 @@ def detect_labels(url):
         for text in texts:
             textlist.append(text.description)
             break
-        textlist = textlist[1]
+        textlist = 
     # textlist = textlist.encode('ascii','ignore')
     # print textlist
 
@@ -76,7 +76,7 @@ def detect_labels(url):
             logolist.append(logo.description)
 
 
-    return '\n'.join(facelist+logolist+slabels)+textlist
+    return '\n'.join(facelist+logolist+slabels+textlist)
 
     
 
