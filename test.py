@@ -60,7 +60,7 @@ def detect_labels(url):
         for text in texts:
             textlist.append(text.description)
             break
-        textlist = 
+        
     # textlist = textlist.encode('ascii','ignore')
     # print textlist
 
