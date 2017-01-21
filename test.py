@@ -34,15 +34,15 @@ def detect_labels(url):
 	return shots
 
 
-def detect_labels_from_url(uri):
-	"""Detects labels in the file located in Google Cloud Storage."""
-	vision_client = vision.Client()
-	image = vision_client.image(source_uri=uri)
-	labels = image.detect_labels()
-	print('Labels:')
-	shots =[]
-	for label in labels:
-		shots.append(label)
-	return shots
+# def detect_labels_from_url(uri):
+# 	"""Detects labels in the file located in Google Cloud Storage."""
+# 	vision_client = vision.Client()
+# 	image = vision_client.image(source_uri=uri)
+# 	labels = image.detect_labels()
+# 	print('Labels:')
+# 	shots =[]
+# 	for label in labels:
+# 		shots.append(label)
+# 	return shots
     
-print detect_labels()
+# print detect_labels()
