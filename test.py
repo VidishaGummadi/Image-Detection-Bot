@@ -27,19 +27,17 @@ def detect_labels(url):
 
 	    # Performs label detection on the image file
 	labels = image.detect_labels()
-
-	print('Labels:')
 	slabels =[]
 	for label in labels:
 		slabels.append(label.description)
 
 	faces = image.detect_faces()
 	facelist = []
-
 	for face in faces:
-		facelist.append(face.emotions.anger)
-		facelist.append(face.emotions.joy)
-		facelist.append(face.emotions.surprise)
+		facelist.append("anger-"+face.emotions.anger.value)
+		facelist.append("joy-"+face.emotions.joy.value)
+		facelist.append("surprise-"+face.emotions.surprise.value)
+		facelist.append("sorrow-"+face.emotions.sorrow.value)
         # print('anger: {}'.format(face.emotions.anger))
         # print('joy: {}'.format(face.emotions.joy))
         # print('surprise: {}'.format(face.emotions.surprise))
