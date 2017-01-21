@@ -32,7 +32,7 @@ def detect_labels(url):
 	shots =[]
 	for label in labels:
 		shots.append(label.description)
-	return shots
+	return '\n'.join(shots)
 
 
 # def detect_labels_from_url(uri):
