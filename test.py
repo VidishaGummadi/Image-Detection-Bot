@@ -2,7 +2,7 @@ from oauth2client.client import flow_from_clientsecrets
 from google.cloud import vision
 import io
 import os
-import requests
+import requests, shutil
 
 def download_image(url):
     filename = 'test.jpg'
