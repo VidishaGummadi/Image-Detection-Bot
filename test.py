@@ -32,7 +32,7 @@ def detect_labels(url):
     # Performs label detection on the image file
     
     labels = image.detect_labels()
-    slabels =["Labels:"]
+    slabels =["\nLabels:"]
     for label in labels:
         slabels.append(label.description)
 
