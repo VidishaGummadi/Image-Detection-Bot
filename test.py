@@ -1,6 +1,7 @@
 from oauth2client.client import flow_from_clientsecrets
 from google.cloud import vision
 import io
+import unicodedata
 import os
 import requests, shutil
 
@@ -54,10 +55,10 @@ def detect_labels(url):
     else:
         for text in texts:
             textlist.append(text.description)
-        textlist = " ".join(textlist)
+        textlist = textlist.encode('ascii','ignore')
 
 
-    return '\n'.join(slabels+facelist+textlist)
+    return '\n'.join(slabels+facelist)+textlist
 
 
 # def detect_labels_from_url(uri):
