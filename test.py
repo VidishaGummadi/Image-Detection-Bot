@@ -5,6 +5,9 @@ import unicodedata
 import os
 import requests, shutil
 
+
+dd = {'VERY_UNLIKELY':'10%','VERY_LIKELY':'95%','LIKELY':'80%','POSSIBLE':'65%','UNKNOWN':'50%','UNLIKELY':'30%'}
+
 def download_image(url):
     filename = 'test.jpg'
     response = requests.get(url, stream=True)
@@ -42,22 +45,24 @@ def detect_labels(url):
         facelist.append("Sorry!! No faces recognized")
     else:
         for face in faces:
-            facelist.append("anger-"+face.emotions.anger.value)
-            facelist.append("joy-"+face.emotions.joy.value)
-            facelist.append("surprise-"+face.emotions.surprise.value)
-            facelist.append("sorrow-"+face.emotions.sorrow.value)
+            facelist.append("anger-"+dd[face.emotions.anger.value])
+            facelist.append("joy-"+dd[face.emotions.joy.value])
+            facelist.append("surprise-"+dd[face.emotions.surprise.value])
+            facelist.append("sorrow-"+dd[face.emotions.sorrow.value])
             facelist.append("\n")
 
     # # Performs Text detection on the image file
-    # texts = image.detect_text()
-    # textlist = ["\nTexts:"]
-    # if not texts:
-    #     textlist.append("Sorry!! No Text Found")
-    # else:
-    #     for text in texts:
-    #         textlist.append(text.description)
-    #     textlist = " ".join(textlist)
-    #     textlist = textlist.encode('ascii','ignore')
+    texts = image.detect_text()
+    textlist = ["\nTexts:"]
+    if not texts:
+        textlist.append("Sorry!! No Text Found")
+    else:
+        for text in texts:
+            textlist.append(text.description)
+            break
+        textlist = textlist[1]
+    # textlist = textlist.encode('ascii','ignore')
+    # print textlist
 
 
     # Performs Logo detection on the image file
@@ -71,7 +76,7 @@ def detect_labels(url):
             logolist.append(logo.description)
 
 
-    return '\n'.join(slabels+facelist+logolist)
+    return '\n'.join(facelist+logolist+slabels)+textlist
 
     
 
