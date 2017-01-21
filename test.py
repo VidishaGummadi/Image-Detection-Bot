@@ -27,12 +27,12 @@ def detect_labels(url):
 
 	    # Performs label detection on the image file
 	labels = image.detect_labels()
-	slabels =[]
+	slabels =["Labels:"]
 	for label in labels:
 		slabels.append(label.description)
 
 	faces = image.detect_faces()
-	facelist = []
+	facelist = ["Faces:"]
 	for face in faces:
 		facelist.append("anger-"+face.emotions.anger.value)
 		facelist.append("joy-"+face.emotions.joy.value)
