@@ -48,15 +48,12 @@ def detect_labels(url):
 
 	# Performs Text detection on the image file
 	texts = image.detect_text()
-    textlist = ["\nTexts:"]
-    if not texts:
-    	textlist.append("Sorry!! No Text Found")
-    else:
-	    for text in texts:
-	        textlist.append(text.description)
-
-
-
+	textlist = ["\nTexts:"]
+	if not texts:
+		textlist.append("Sorry!! No Text Found")
+	else:
+		for text in texts:
+			textlist.append(text.description)
 
 
 	return '\n'.join(slabels+facelist+textlist)
