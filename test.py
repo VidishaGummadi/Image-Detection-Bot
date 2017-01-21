@@ -29,10 +29,22 @@ def detect_labels(url):
 	labels = image.detect_labels()
 
 	print('Labels:')
-	shots =[]
+	slabels =[]
 	for label in labels:
-		shots.append(label.description)
-	return '\n'.join(shots)
+		slabels.append(label.description)
+
+	faces = image.detect_faces()
+	facelist = []
+
+    for face in faces:
+    	facelist.append(face.emotions.anger)
+    	facelist.append(face.emotions.joy)
+    	facelist.append(face.emotions.surprise)
+        # print('anger: {}'.format(face.emotions.anger))
+        # print('joy: {}'.format(face.emotions.joy))
+        # print('surprise: {}'.format(face.emotions.surprise))
+
+	return '\n'.join(slabels+facelist)
 
 
 # def detect_labels_from_url(uri):
