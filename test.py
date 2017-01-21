@@ -46,6 +46,7 @@ def detect_labels(url):
             facelist.append("joy-"+face.emotions.joy.value)
             facelist.append("surprise-"+face.emotions.surprise.value)
             facelist.append("sorrow-"+face.emotions.sorrow.value)
+            facelist.append("\n")
 
     # Performs Text detection on the image file
     texts = image.detect_text()
@@ -59,8 +60,17 @@ def detect_labels(url):
         textlist = textlist.encode('ascii','ignore')
 
 
-    return '\n'.join(slabels+facelist)+textlist
+    # Performs Logo detection on the image file
+    logos = image.detect_logos()
 
+    logolist = ["\nLogos:"]
+    for logo in logos:
+        logolist.append(logo.description)
+
+
+    return '\n'.join(slabels+facelist+logolist)+textlist
+
+    
 
 # def detect_labels_from_url(uri):
 #   """Detects labels in the file located in Google Cloud Storage."""
