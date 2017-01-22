@@ -2,7 +2,7 @@ import os
 import sys
 import json
 from test import detect_labels
-import unicodedata
+import unicodedata, unicode
 
 import requests
 from flask import Flask, request
