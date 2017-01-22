@@ -79,7 +79,7 @@ def detect_labels(url):
     landmarks = image.detect_landmarks()
     landlist = ["\nLandmarks:"]
     if not landmarks:
-        landlist.append("No Logos Found")
+        landlist.append("No Landmarks Found")
     else:
         for land in landmarks:
             landlist.append(land.description)
