@@ -75,8 +75,17 @@ def detect_labels(url):
         for logo in logos:
             logolist.append(logo.description)
 
+    # Performs Logo detection on the image file
+    landmarks = image.detect_landmarks()
+    landlist = ["\nLandmarks:"]
+    if not landmarks:
+        landlist.append("No Logos Found")
+    else:
+        for land in landmarks:
+            landlist.append(land.description)
 
-    return '\n'.join(facelist+logolist+slabels+textlist)
+
+    return '\n'.join(facelist+logolist+slabels+textlist+landlist)
 
     
 
