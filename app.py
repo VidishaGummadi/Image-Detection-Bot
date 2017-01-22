@@ -2,6 +2,7 @@ import os
 import sys
 import json
 from test import detect_labels
+import unicodedata
 
 import requests
 from flask import Flask, request
@@ -71,7 +72,7 @@ def webhook():
 
 def send_message(recipient_id, message_text):
 
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text= unicode(message_text, errors='ignore')))
 
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
